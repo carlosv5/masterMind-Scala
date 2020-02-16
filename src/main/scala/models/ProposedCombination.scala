@@ -33,7 +33,7 @@ class ProposedCombination(combinations : List[List[Color.Color]] = Nil, results:
   }
 
   def isWinner(): Boolean =
-    false
+    results_.last(0) == Dimensions.sizeCombination
 
   def isFinished(turn : Int) : Boolean =
     isWinner || turn == Dimensions.sizeListGame
