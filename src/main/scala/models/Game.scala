@@ -5,7 +5,7 @@ object Dimensions {
   val sizeListGame = 10
 }
 
-class Game(turn: Int = 1, secretCombination: SecretCombination = new SecretCombination(Dimensions.sizeCombination), proposedCombinations : ProposedCombination = new ProposedCombination(Dimensions.sizeCombination, Dimensions.sizeListGame)) {
+class Game(turn: Int = 1, secretCombination: SecretCombination = new SecretCombination(), proposedCombinations : ProposedCombination = new ProposedCombination()) {
   private val turn_ = turn
   private val secretCombination_ = secretCombination
   private val proposedCombinations_  = proposedCombinations
@@ -13,9 +13,9 @@ class Game(turn: Int = 1, secretCombination: SecretCombination = new SecretCombi
   def isFinished: Boolean = proposedCombinations_.isFinished()
   def isWinner: Boolean = proposedCombinations_.isWinner()
 
-  def propose: Game = {
+  def propose(colors : List[Color.Color]): Game = {
     val newTurn = turn_ + 1
-    val newProposedCombinations = proposedCombinations_.propose(newTurn)
+    val newProposedCombinations = proposedCombinations_.propose(colors, newTurn)
     new Game(newTurn, secretCombination_, newProposedCombinations)
   }
 

@@ -14,4 +14,9 @@ object GestorIO {
   def lnwriteln(string:String):Unit =
     print("\n" + string + "\n")
 
+  def readString(title:String):String = {
+    print(s"$title: ")
+    scala.io.StdIn.readLine()
+  }
+
 }

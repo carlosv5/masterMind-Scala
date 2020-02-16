@@ -1,6 +1,5 @@
 package masterMind.models
 import scala.util.Random
-import masterMind.views.GestorIO
 
   object Color extends Enumeration {
     type Color = Value
@@ -12,6 +11,12 @@ import masterMind.views.GestorIO
       val random = new Random
       Color.values.toList(random.nextInt(Color.values.size))
     }
+
+    def getColor(color : Char) : Color.Color =
+      color match {
+        case 'B' => Color.B
+        case 'R' => Color.R
+      }
 
   }
 

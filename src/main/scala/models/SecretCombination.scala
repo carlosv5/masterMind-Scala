@@ -1,8 +1,8 @@
 package masterMind.models
 
-class SecretCombination(size: Int = 4, combination: List[Color.Color] = Nil) {
+class SecretCombination(combination: List[Color.Color] = Nil) {
 
-  private val size_ = size
+  private val size_ = Dimensions.sizeCombination
   private val combination_ =
     combination match {
       case Nil => getSecret

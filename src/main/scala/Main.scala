@@ -2,7 +2,7 @@
 package masterMind
 
 import masterMind.models.Game
-import masterMind.views.{GameView, GestorIO}
+import masterMind.views.{GameView, GestorIO, ProposedCombinationView}
 
 object Main {
 
@@ -12,6 +12,7 @@ object Main {
 
     GameView.writeInit(game)
     do {
+      game = game.propose((ProposedCombinationView.readRow))
       GameView.write(game)
     } while (!game.isFinished)
     GameView.writeFinished(game)

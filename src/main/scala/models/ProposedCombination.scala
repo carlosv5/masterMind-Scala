@@ -1,9 +1,9 @@
 package masterMind.models
 
-class ProposedCombination(combinationSize : Int = 4, numberOfCombinations: Int = 10, combinations : List[List[Color.Color]] = Nil, results: List[Int] = List(0,0)) {
-    val results_ = results
-    val combinationsSize_ = combinationSize
-    val numberOfCombinations_ = numberOfCombinations
+class ProposedCombination(combinations : List[List[Color.Color]] = Nil, results: List[Int] = List(0,0)) {
+  val results_ = results
+  val combinationsSize_ = Dimensions.sizeCombination
+  val numberOfCombinations_ = Dimensions.sizeListGame
 
   private val combinations_ =
     combinations match {
@@ -11,11 +11,13 @@ class ProposedCombination(combinationSize : Int = 4, numberOfCombinations: Int =
       case _ => combinations
     }
 
-  def newCombinations() : List[List[Color.Color]] =
-    List.range(0,numberOfCombinations_).map(x => List.range(0, combinationsSize_).map(x=> Color.X))
+  def newCombinations(): List[List[Color.Color]] =
+    List.range(0, numberOfCombinations_).map(x => List.range(0, combinationsSize_).map(x => Color.X))
 
-  def propose(turn: Int): ProposedCombination =
-    new ProposedCombination()
+  def propose(colors: List[Color.Color], turn: Int): ProposedCombination = {
+    //Here calculate
+    new ProposedCombination(List(colors))
+}
 
   def isWinner(): Boolean =
     false
