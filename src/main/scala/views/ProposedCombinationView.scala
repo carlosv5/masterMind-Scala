@@ -9,7 +9,6 @@ import masterMind.models.{Color, Dimensions, Game}
       val turn = game.getTurn
       val list = game.getProposedCombination.getCombinations(turn)
       for (row <- list) {
-        GestorIO.write(turn + ". ")
         for (element <- row) {
           GestorIO.write(element + "|")
         }

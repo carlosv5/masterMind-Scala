@@ -15,7 +15,7 @@ class Game(turn: Int = 1, secretCombination: SecretCombination = new SecretCombi
 
   def propose(colors : List[Color.Color]): Game = {
     val newTurn = turn_ + 1
-    val newProposedCombinations = proposedCombinations_.propose(colors, newTurn)
+    val newProposedCombinations = proposedCombinations_.propose(colors)
     new Game(newTurn, secretCombination_, newProposedCombinations)
   }
 
