@@ -10,7 +10,7 @@ class Game(turn: Int = 1, secretCombination: SecretCombination = new SecretCombi
   private val secretCombination_ = secretCombination
   private val proposedCombinations_  = proposedCombinations
 
-  def isFinished: Boolean = proposedCombinations_.isFinished()
+  def isFinished: Boolean = proposedCombinations_.isFinished(turn_)
   def isWinner: Boolean = proposedCombinations_.isWinner()
 
   def propose(colors : List[Color.Color]): Game = {

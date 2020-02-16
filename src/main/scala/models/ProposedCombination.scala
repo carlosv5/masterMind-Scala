@@ -22,8 +22,8 @@ class ProposedCombination(combinations : List[List[Color.Color]] = Nil, results:
   def isWinner(): Boolean =
     false
 
-  def isFinished() : Boolean =
-    true
+  def isFinished(turn : Int) : Boolean =
+    isWinner || turn == Dimensions.sizeListGame
 
   def getCombinations(turn : Int) : List[List[Color.Color]] =
     combinations_.take(turn)
