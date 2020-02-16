@@ -6,14 +6,8 @@ class ProposedCombination(combinations : List[List[Color.Color]] = Nil, results:
   val numberOfCombinations_ = Dimensions.sizeListGame
   val combinations_ = combinations
 
-  def newCombinations(): List[List[Color.Color]] =
-    List.range(0, numberOfCombinations_).map(x => List.range(0, combinationsSize_).map(x => Color.X))
-
-  def propose(colors: List[Color.Color]) : ProposedCombination = {
-    combinations_ match {
-      case Nil => new ProposedCombination(List(colors), calculateResults)
-      case _ => new ProposedCombination(concatenate(combinations_, colors), calculateResults)
-    }
+  def propose(colors: List[Color.Color], secretCombination: SecretCombination) : ProposedCombination = {
+    new ProposedCombination(concatenate(combinations_, colors), calculateResults(colors, secretCombination))
   }
 
   def concatenate[A](list1: List[List[A]], list2 : List[A]) : List[List[A]] =
@@ -22,12 +16,21 @@ class ProposedCombination(combinations : List[List[Color.Color]] = Nil, results:
       case head :: tail => head :: concatenate(tail, list2)
     }
 
-  def calculateResults : List[List[Int]] =
-    results_ match {
-      case Nil => List(List(0,0))
-      case _ => concatenate(results_, List(0,0))
-    }
+  def calculateResults(colors : List[Color.Color], secretCombination: SecretCombination) : List[List[Int]] = {
+    def calculateBlackResults(list1 : List[Color.Color], list2 : List[Color.Color]) : Int =
+      list1 match {
+        case Nil => 0
+        case head :: tail if head == list2.head => 1 + calculateBlackResults(tail, list2.tail)
+        case head :: tail => calculateBlackResults(tail, list2.tail)
+      }
 
+
+    val secCombinations = secretCombination.getCombination
+    results_ match {
+      case Nil => List(List(calculateBlackResults(colors, secCombinations), 0))
+      case _ => concatenate(results_, List(calculateBlackResults(colors, secCombinations), 0))
+    }
+  }
 
   def isWinner(): Boolean =
     false
