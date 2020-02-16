@@ -12,7 +12,7 @@ class ProposedCombination(combinationSize : Int = 4, numberOfCombinations: Int =
     }
 
   def newCombinations() : List[List[Color.Color]] =
-    List.range(0,numberOfCombinations_).map(x => List(Range(1, combinationsSize_)).map(x=> Color.EMPTY))
+    List.range(0,numberOfCombinations_).map(x => List.range(0, combinationsSize_).map(x=> Color.X))
 
   def propose(turn: Int): ProposedCombination =
     new ProposedCombination()
@@ -22,4 +22,7 @@ class ProposedCombination(combinationSize : Int = 4, numberOfCombinations: Int =
 
   def isFinished() : Boolean =
     true
+
+  def getCombinations : List[List[Color.Color]] =
+    combinations_
 }

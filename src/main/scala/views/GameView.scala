@@ -13,6 +13,5 @@ object GameView {
   }
   def writeFinished(game:Game) = {
     SecretCombinationView.write(game)
-    ProposedCombinationView.write(game)
   }
 }

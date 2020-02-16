@@ -2,7 +2,7 @@ package masterMind.models
 
 object Dimensions {
   val sizeCombination = 4
-  val sizeListGame = 2
+  val sizeListGame = 10
 }
 
 class Game(turn: Int = 0, secretCombination: SecretCombination = new SecretCombination(Dimensions.sizeCombination), proposedCombinations : ProposedCombination = new ProposedCombination(Dimensions.sizeCombination, Dimensions.sizeListGame)) {
@@ -21,5 +21,8 @@ class Game(turn: Int = 0, secretCombination: SecretCombination = new SecretCombi
 
   def getSecretCombination: SecretCombination =
     secretCombination_
+
+  def getProposedCombination: ProposedCombination =
+    proposedCombinations_
 
 }

@@ -9,6 +9,9 @@ object GestorIO {
     print(string + "\n")
 
   def lnwrite(string:String):Unit =
-    print("\n" + string)
+  print("\n" + string)
+
+  def lnwriteln(string:String):Unit =
+    print("\n" + string + "\n")
 
 }
