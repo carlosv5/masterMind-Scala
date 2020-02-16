@@ -10,11 +10,14 @@ object Main {
 
   def main(args: Array[String]): Unit = {
 
-    GameView.write(game)
+    GameView.writeInit(game)
     do {
-
       GameView.write(game)
     } while (!game.isFinished)
-    GestorIO.write("You lose!")
+    GameView.writeFinished(game)
+    if(game.isWinner)
+    GestorIO.lnwrite("You win!")
+    else
+      GestorIO.lnwrite("You lose!")
   }
 }

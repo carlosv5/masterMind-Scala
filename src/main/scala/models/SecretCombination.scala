@@ -1,11 +1,17 @@
 package masterMind.models
-import masterMind.views.GestorIO
 
+class SecretCombination(size: Int = 4, combination: List[Color.Color] = Nil) {
 
-class SecretCombination(combination: List[Color.Color] = List(1, 2, 3, 4).map(x => Color.RandomColor()), size: Int = 4) {
+  private val size_ = size
+  private val combination_ =
+    combination match {
+      case Nil => getSecret
+      case _ => combination
+    }
 
-  private val combination_ = combination
+  def getSecret : List[Color.Color] =
+    List.range(0,size_).map(x => Color.RandomColor())
 
-  def getSecret() : List[Color.Color] =
+  def getCombination : List[Color.Color] =
     combination_
 }
