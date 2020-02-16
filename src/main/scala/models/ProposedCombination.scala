@@ -30,6 +30,5 @@ class ProposedCombination(combinations : List[List[Color.Color]] = Nil, results:
     isWinner || turn == Dimensions.sizeListGame
 
   def getCombinations(turn : Int) : List[List[Color.Color]] =
-    //combinations_.take(turn)
-  combinations_
+    combinations_
 }
