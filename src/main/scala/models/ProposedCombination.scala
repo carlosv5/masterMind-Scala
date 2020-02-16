@@ -23,6 +23,6 @@ class ProposedCombination(combinationSize : Int = 4, numberOfCombinations: Int =
   def isFinished() : Boolean =
     true
 
-  def getCombinations : List[List[Color.Color]] =
-    combinations_
+  def getCombinations(turn : Int) : List[List[Color.Color]] =
+    combinations_.take(turn)
 }

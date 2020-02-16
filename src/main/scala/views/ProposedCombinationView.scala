@@ -6,9 +6,10 @@ import masterMind.models.Game
 
     def write(game: Game) = {
       GestorIO.lnwriteln(("Las combinaciones propuestas son: "))
-      val list = game.getProposedCombination.getCombinations
+      val turn = game.getTurn
+      val list = game.getProposedCombination.getCombinations(turn)
       for(row <- list){
-        GestorIO.write(list.indexOf(row) + ". ")
+        GestorIO.write(turn + ". ")
         for (element <- row) {
           GestorIO.write(element + "|")
         }
