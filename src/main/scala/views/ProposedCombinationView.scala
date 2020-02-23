@@ -17,7 +17,7 @@ import masterMind.models.{Color, Dimensions, Game}
         for(result <- 0 until results(row).size){
           GestorIO.write(results(row)(result) + "|")
         }
-        GestorIO.lnwriteln("--")
+        GestorIO.writeln("")
       }
     }
 

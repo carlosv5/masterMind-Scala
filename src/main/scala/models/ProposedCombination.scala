@@ -24,11 +24,27 @@ class ProposedCombination(combinations : List[List[Color.Color]] = Nil, results:
         case head :: tail => calculateBlackResults(tail, list2.tail)
       }
 
+    def calculateWhiteResults(list1 : List[Color.Color], list2 : List[Color.Color]) : Int = {
+      list1 match {
+        case Nil => 0
+        case head :: tail if head == list2.head => 1 + calculateWhiteResults(tail, list2.tail)
+        case head :: tail => calculateWhiteResults(tail, list2)
+      }
+    }
+
+    def auxCalculateWhites(list1 : List[Color.Color], list2 : List[Color.Color]) : List[Color.Color] =
+      list1 match {
+        case Nil => Nil
+        case head :: tail if head == list2.head => auxCalculateWhites(tail, list2.tail)
+        case head::tail => head :: auxCalculateWhites(tail, list2.tail)
+      }
 
     val secCombinations = secretCombination.getCombination
+    val auxList1 = auxCalculateWhites(colors, secCombinations)
+    val auxList2 = auxCalculateWhites(secCombinations, colors)
     results_ match {
-      case Nil => List(List(calculateBlackResults(colors, secCombinations), 0))
-      case _ => concatenate(results_, List(calculateBlackResults(colors, secCombinations), 0))
+      case Nil => List(List(calculateBlackResults(colors, secCombinations), calculateWhiteResults(auxList1, auxList2)))
+      case _ => concatenate(results_, List(calculateBlackResults(colors, secCombinations), calculateWhiteResults(auxList1, auxList2)))
     }
   }
 
