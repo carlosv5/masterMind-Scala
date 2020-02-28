@@ -59,4 +59,11 @@ class ProposedCombination(combinations : List[List[Color.Color]] = Nil, results:
 
   def getResults() : List[List[Int]] =
     results_
+
+  override def equals(that: Any): Boolean =
+    that match {
+      case that: ProposedCombination =>
+        this.combinations_ == that.combinations_ && this.results_ == that.results_ && this.combinationsSize_ == that.combinationsSize_ && this.numberOfCombinations_ == that.numberOfCombinations_
+      case _ => false
+    }
 }

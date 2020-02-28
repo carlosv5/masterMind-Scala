@@ -14,4 +14,12 @@ class SecretCombination(combination: List[Color.Color] = Nil) {
 
   def getCombination : List[Color.Color] =
     combination_
+
+
+  override def equals(that: Any): Boolean =
+    that match {
+      case that: SecretCombination =>
+        this.combination_ == that.combination_ && this.size_ == that.size_
+      case _ => false
+    }
 }

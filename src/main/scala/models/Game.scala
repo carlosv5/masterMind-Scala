@@ -28,4 +28,10 @@ class Game(turn: Int = 1, secretCombination: SecretCombination = new SecretCombi
   def getTurn : Int =
     turn_
 
+  override def equals(that: Any): Boolean =
+    that match {
+      case that: Game => this.turn_ == that.turn_ && this.proposedCombinations_ == that.proposedCombinations_ && this.secretCombination_ == that.secretCombination_
+      case _ => false
+    }
+
 }
