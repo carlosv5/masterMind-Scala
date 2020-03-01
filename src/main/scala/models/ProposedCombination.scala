@@ -49,10 +49,11 @@ class ProposedCombination(combinations : List[List[Color.Color]] = Nil, results:
   }
 
   def isWinner(): Boolean =
-    results_.last(0) == Dimensions.sizeCombination
+    results_.last(0) == combinationsSize_
 
-  def isFinished(turn : Int) : Boolean =
-    isWinner || turn == Dimensions.sizeListGame
+  def isFinished(turn : Int) : Boolean = {
+    isWinner || turn > Dimensions.sizeListGame
+  }
 
   def getCombinations() : List[List[Color.Color]] =
     combinations_
