@@ -11,8 +11,6 @@ object Main {
   def main(args: Array[String]): Unit = {
 
     GameView.writeInit(game)
-    //debug
-    SecretCombinationView.write(game)
     do {
       game = game.propose((ProposedCombinationView.readRow))
       GameView.write(game)

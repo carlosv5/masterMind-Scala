@@ -27,7 +27,7 @@ class ProposedCombination(combinations : List[List[Color.Color]] = Nil, results:
     def calculateWhiteResults(list1 : List[Color.Color], list2 : List[Color.Color]) : Int = {
       list1 match {
         case Nil => 0
-        case head :: tail if head == list2.head => 1 + calculateWhiteResults(tail, list2.tail)
+        case head :: tail if list2.contains(head) => 1 + calculateWhiteResults(tail, list2)
         case head :: tail => calculateWhiteResults(tail, list2)
       }
     }

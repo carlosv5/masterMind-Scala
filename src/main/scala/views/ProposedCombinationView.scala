@@ -21,6 +21,9 @@ import masterMind.models.{Color, Dimensions, Game}
       }
     }
 
+    def WriteNumberOfTries(game: Game) =
+      GestorIO.lnwriteln(("Tienes " + game.getProposedCombination.numberOfCombinations_ + " intentos"))
+
     def readRow: List[Color.Color] = {
       ColorView.readColors
     }

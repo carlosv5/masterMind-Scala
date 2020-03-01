@@ -10,8 +10,12 @@ object GameView {
 
   def writeInit(game:Game) = {
     SecretCombinationView.writeSecret(game)
+    ProposedCombinationView.WriteNumberOfTries(game)
+    ColorView.writePossibleColors()
+    GestorIO.writeln("")
   }
   def writeFinished(game:Game) = {
     SecretCombinationView.write(game)
   }
+
 }
